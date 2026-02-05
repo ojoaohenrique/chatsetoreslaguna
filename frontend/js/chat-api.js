@@ -2,7 +2,9 @@
 
 class ChatAPI {
     constructor() {
-        this.baseURL = 'http://localhost:3000/api/chat';
+        // Detecta automaticamente se está em produção ou desenvolvimento
+        const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+        this.baseURL = isProduction ? '/api' : 'http://localhost:3000/api/chat';
         this.conversationHistory = [];
     }
 
@@ -11,7 +13,8 @@ class ChatAPI {
      */
     async sendMessage(message) {
         try {
-            const response = await fetch(`${this.baseURL}/message`, {
+            const endpoint = this.baseURL.includes('localhost') ? `${this.baseURL}/message` : `${this.baseURL}/chat`;
+            const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
