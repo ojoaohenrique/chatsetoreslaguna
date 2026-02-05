@@ -1,6 +1,6 @@
 const OpenAI = require('openai');
 
-module.exports = async function handler(req, res) {
+module.exports = async function (req, res) {
     // Inicializa OpenAI dentro da função
     const openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY
@@ -99,4 +99,4 @@ HORÁRIO PADRÃO: Segunda a Sexta, 8h às 17h (exceto Guarda Municipal: 24h)`;
             error: 'Erro ao processar sua mensagem. Tente novamente.'
         });
     }
-};
+}
