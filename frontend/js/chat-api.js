@@ -13,7 +13,7 @@ class ChatAPI {
      */
     async sendMessage(message) {
         try {
-            const endpoint = this.baseURL.includes('localhost') ? `${this.baseURL}/message` : `${this.baseURL}/chat`;
+            const endpoint = this.baseURL.includes('localhost') ? `${this.baseURL}/message` : '/api/chat';
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
