@@ -55,6 +55,9 @@ HORÁRIO PADRÃO: Segunda a Sexta, 8h às 17h (exceto Guarda Municipal: 24h)`;
             return res.status(500).json({ success: false, error: 'API Key não configurada no servidor' });
         }
 
+        console.log('OPENAI_API_KEY existe:', !!process.env.OPENAI_API_KEY);
+        console.log('OPENAI_API_KEY começa com sk-proj:', process.env.OPENAI_API_KEY?.startsWith('sk-proj-'));
+
         // Prepara mensagens para a API
         const messages = [
             { role: 'system', content: systemPrompt },
